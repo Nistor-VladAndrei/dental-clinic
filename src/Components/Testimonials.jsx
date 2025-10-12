@@ -1,20 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { Menu, X, Phone, Mail, MapPin, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, useReducedMotion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: 'easeOut' }
-};
-
-const staggerContainer = {
-  animate: { transition: { staggerChildren: 0.1 } }
-};
 const Testimonials = () => {
   const [current, setCurrent] = useState(0);
   const prefersReducedMotion = useReducedMotion();
+  
   const testimonials = [
     {
       name: 'Elena Radu',
@@ -45,7 +36,11 @@ const Testimonials = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ 
+            duration: 0.5, 
+            delay: prefersReducedMotion ? 0 : 0.1,
+            ease: [0.25, 0.1, 0.25, 1]
+          }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-extralight text-gray-800 mb-4 tracking-tight">Testimoniale Pacienți</h2>
@@ -53,32 +48,31 @@ const Testimonials = () => {
         </motion.div>
 
         <div className="relative">
-          <motion.div
-            key={current}
-            initial={prefersReducedMotion ? {} : { opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={prefersReducedMotion ? {} : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.3 }}
-            className="bg-gradient-to-br from-blue-50/60 to-purple-50/40 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-white/40 shadow-lg text-center"
-          >
-            <div className="flex justify-center mb-6">
-              {[...Array(testimonials[current].rating)].map((_, i) => (
-                <motion.span
-                  key={i}
-                  initial={prefersReducedMotion ? { scale: 1 } : { scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: i * 0.1, type: 'spring' }}
-                  className="text-yellow-400 text-2xl"
-                >
-                  ⭐
-                </motion.span>
-              ))}
-            </div>
-            <p className="text-lg md:text-xl text-gray-600 mb-6 italic leading-relaxed font-light">
-              "{testimonials[current].text}"
-            </p>
-            <p className="text-lg font-light text-gray-800">{testimonials[current].name}</p>
-          </motion.div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, x: -50 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="bg-gradient-to-br from-blue-50/60 to-purple-50/40 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-white/40 shadow-lg text-center"
+            >
+              <div className="flex justify-center mb-6 gap-1">
+                {[...Array(testimonials[current].rating)].map((_, i) => (
+                  <span
+                    key={i}
+                    className="text-yellow-400 text-2xl"
+                  >
+                    ⭐
+                  </span>
+                ))}
+              </div>
+              <p className="text-lg md:text-xl text-gray-600 mb-6 italic leading-relaxed font-light">
+                "{testimonials[current].text}"
+              </p>
+              <p className="text-lg font-light text-gray-800">{testimonials[current].name}</p>
+            </motion.div>
+          </AnimatePresence>
 
           <motion.button
             onClick={prev}
@@ -116,6 +110,5 @@ const Testimonials = () => {
     </section>
   );
 };
-
 
 export default Testimonials;

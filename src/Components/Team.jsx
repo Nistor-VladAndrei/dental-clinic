@@ -15,16 +15,16 @@ const Team = () => {
   const prefersReducedMotion = useReducedMotion();
   const team = [
     {
-      name: 'Dr. Alexandru Gheorghiade',
-      role: 'Medic Dentist Principal & Fondator',
-      bio: 'DDS, peste 20 de ani de experiență',
-      emoji: '👨‍⚕️',
+      name: 'Dr. Gheorghiade Anita Giorgiana',
+      role: 'Medic Dentist, Stomatologie Generală',
+      bio: 'peste 20 de ani de experiență',
+      emoji: '👩‍⚕️',
     },
     {
-      name: 'Dr. Maria Ionescu',
-      role: 'Ortodont',
-      bio: 'Specialist în ortodonție',
-      emoji: '👩‍⚕️',
+      name: 'Dr. Gheorghiade Valentin Dan',
+      role: 'Medic Dentist, Stomatologie Generală',
+      bio: 'peste 20 de ani de experiență',
+      emoji: '👨‍⚕️',
     },
     {
       name: 'Ana Popescu',

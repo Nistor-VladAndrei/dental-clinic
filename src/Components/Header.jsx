@@ -43,16 +43,16 @@ const Header = () => {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-gray-600 hover:text-blue-500 transition-colors duration-300 font-light text-sm tracking-wide"
+                className="text-gray-700 text-base hover:text-blue-500 transition-colors duration-300 font-heavy text-sm tracking-wide"
               >
                 {item}
               </a>
             ))}
           </nav>
 
-          <button className="hidden md:block bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-2.5 rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg text-sm font-light tracking-wide">
+          <a href="#contact"className="hidden md:block bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-2.5 rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg text-sm font-light tracking-wide">
             Programare
-          </button>
+          </a>
 
           {/* Mobile Menu Button */}
           <button

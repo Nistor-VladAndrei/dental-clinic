@@ -51,10 +51,14 @@ const Services = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 0 }}
+          whileInView={{ opacity: 1, y: 3 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ 
+            duration: 0.26, 
+            delay: 0,
+            ease: [0.25, 0.1, 0.25, 1]
+          }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-extralight text-gray-800 mb-4 tracking-tight">Serviciile Noastre</h2>

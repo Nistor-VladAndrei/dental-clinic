@@ -20,7 +20,7 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50/50 via-white to-purple-50/30">
       <AnimatedBackground />
       
-      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/30 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/20 pointer-events-none" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
         <motion.div 
@@ -57,32 +57,33 @@ const Hero = () => {
             variants={fadeInUp}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <motion.button 
+            <motion.a 
               whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
               whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
               className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-10 py-4 rounded-full text-lg font-light tracking-wide shadow-xl hover:shadow-2xl transition-shadow duration-300"
+              href='#contact'
             >
               Programează Consultație
-            </motion.button>
+            </motion.a>
             
-            <motion.button 
+            <motion.a 
               whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
               whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
               className="bg-white/80 backdrop-blur-md text-blue-600 px-10 py-4 rounded-full text-lg font-light tracking-wide border border-blue-200 hover:bg-white transition-all duration-300 shadow-lg"
+              href='#servicii'
             >
               Află Mai Multe
-            </motion.button>
+            </motion.a>
           </motion.div>
 
-          {/* Stats Cards */}
           <motion.div 
             variants={fadeInUp}
             className="mt-16 grid grid-cols-3 gap-4 max-w-3xl mx-auto"
           >
             {[
               { label: 'Ani de experiență', value: '20+', icon: '⏱️' },
-              { label: 'Pacienți fericiți', value: '5000+', icon: '😊' },
-              { label: 'Rată de succes', value: '98%', icon: '⭐' }
+              { label: 'Pacienți fericiți', value: '500+', icon: '😊' },
+              { label: 'Rată de succes', value: '99%', icon: '⭐' }
             ].map((item, i) => (
               <motion.div
                 key={i}

@@ -1,16 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { Menu, X, Phone, Mail, MapPin, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: 'easeOut' }
-};
-
-const staggerContainer = {
-  animate: { transition: { staggerChildren: 0.1 } }
-};
 const ServiceCard = ({ title, description, icon, index }) => {
   const prefersReducedMotion = useReducedMotion();
   
@@ -18,13 +8,18 @@ const ServiceCard = ({ title, description, icon, index }) => {
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.4, delay: index * 0.08 }}
-      whileHover={prefersReducedMotion ? {} : { y: -8 }}
-      className="bg-white/60 backdrop-blur-md p-8 rounded-3xl border border-white/40 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+      viewport={{ once: true, margin: "-50px", amount: 0.3 }}
+      transition={{ 
+        duration: 0.5, 
+        delay: prefersReducedMotion ? 0 : index * 0.1,
+        ease: [0.25, 0.1, 0.25, 1]
+      }}
+      className="bg-white/60 backdrop-blur-md p-8 rounded-3xl border border-white/40 shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer will-change-transform"
+      style={{ transform: 'translateZ(0)' }}
     >
       <motion.div 
         whileHover={prefersReducedMotion ? {} : { scale: 1.1, rotate: 5 }}
+        whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         className="w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center mb-6"
       >
@@ -35,4 +30,5 @@ const ServiceCard = ({ title, description, icon, index }) => {
     </motion.div>
   );
 };
+
 export default ServiceCard;
