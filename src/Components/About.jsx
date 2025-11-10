@@ -70,16 +70,14 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <motion.div
-              whileHover={prefersReducedMotion ? {} : { scale: 1.02, rotate: 2 }}
-              transition={{ duration: 0.3 }}
-              className="aspect-square bg-gradient-to-br from-blue-100/70 to-purple-100/70 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white/40 flex items-center justify-center"
-              aria-hidden="true"
-            >
-              <div className="text-8xl" role="img" aria-label="Medic stomatolog">
-                👨‍⚕️
-              </div>
-            </motion.div>
+           <motion.div
+            whileHover={prefersReducedMotion ? {} : { scale: 1.02, rotate: 2 }}
+            transition={{ duration: 0.3 }}
+            className="aspect-square bg-cover bg-center rounded-3xl shadow-2xl overflow-hidden border border-white/40 flex items-center justify-center"
+            style={{ backgroundImage: `url(${require('./dr-img.png')})` }}
+
+            aria-hidden="true"
+          />
 
             {/* Optional: micro-CTA subtext */}
             <div className="mt-6 text-sm text-gray-600">

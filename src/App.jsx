@@ -8,7 +8,8 @@ import Testimonials from './Components/Testimonials';
 import Contact from './Components/Contact';
 import Footer from './Components/Footer';
 import AnimatedBackground from './Components/AnimatedBackground';
-
+import Locations from './Components/locatii';
+import Expensis from './Components/Expensis';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -28,7 +29,9 @@ function App() {
       <Hero />
       <About />
       <Services />
+      <Locations></Locations>
       <Team />
+      <Expensis/>
       <Testimonials />
       <Contact />
       <Footer />

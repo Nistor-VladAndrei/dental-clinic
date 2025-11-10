@@ -23,7 +23,7 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Despre', 'Servicii', 'Echipa', 'Testimoniale', 'Contact'];
+  const navItems = ['Despre', 'Servicii', 'Locații', 'Echipa', 'Prețuri', 'Testimoniale', 'Contact'];
 
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 ${
