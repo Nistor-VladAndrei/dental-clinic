@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { Menu, X, Phone, Mail, MapPin, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
-
+import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -12,6 +10,7 @@ const fadeInUp = {
 const staggerContainer = {
   animate: { transition: { staggerChildren: 0.1 } }
 };
+
 const About = () => {
   const prefersReducedMotion = useReducedMotion();
   
@@ -28,13 +27,15 @@ const About = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-6xl font-extralight text-gray-800 mb-6 tracking-tight">
-              Bine ați venit la Clinica Dr. Gheorghiade
+            Dr. Gheorghiade – Implantologie și Estetică Dentară în Craiova
             </h2>
+
             <p className="text-lg text-gray-500 mb-6 leading-relaxed font-light">
-              De peste 20 de ani, Dr. Gheorghiade oferă îngrijire dentară excepțională familiilor din comunitatea noastră. Practica noastră combină tehnologia de ultimă generație cu un mediu cald și primitiv.
+              De peste <strong>20 de ani</strong> suntem alături de pacienții din <strong>Craiova</strong> cu servicii complete de <em>implantologie</em>, <em>endodonție</em>, <em>ortodonție</em> și <em>estetică dentară</em>. Folosim echipamente moderne (CBCT, tehnologii digitale) pentru planuri de tratament personalizate și rezultate durabile.
             </p>
+
             <p className="text-lg text-gray-500 mb-8 leading-relaxed font-light">
-              Credem că fiecare pacient merită atenție personalizată și cel mai înalt standard de tratament. Echipa noastră este dedicată să facă experiența ta dentară confortabilă și eficientă.
+              La Clinica Dr. Gheorghiade prioritatea noastră este siguranța și confortul pacientului: evaluare completă, explicații clare despre opțiuni, și follow-up post-tratament. Avem două locații în Craiova (Preajba și zona Selgros) și program flexibil pentru consultații în afara orelor obișnuite.
             </p>
             
             <motion.div 
@@ -45,9 +46,9 @@ const About = () => {
               variants={staggerContainer}
             >
               {[
-                { value: '20+', label: 'Ani' },
-                { value: '5000+', label: 'Pacienți' },
-                { value: '98%', label: 'Satisfacție' }
+                { value: '20+', label: 'Ani experiență în Craiova' },
+                { value: '5000+', label: 'Pacienți tratați' },
+                { value: '98%', label: 'Satisfacție pacienți' }
               ].map((stat, i) => (
                 <motion.div
                   key={i}
@@ -72,12 +73,19 @@ const About = () => {
             <motion.div
               whileHover={prefersReducedMotion ? {} : { scale: 1.02, rotate: 2 }}
               transition={{ duration: 0.3 }}
-              className="aspect-square bg-gradient-to-br from-blue-100/70 to-purple-100/70 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white/40"
+              className="aspect-square bg-gradient-to-br from-blue-100/70 to-purple-100/70 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white/40 flex items-center justify-center"
+              aria-hidden="true"
             >
-              <div className="w-full h-full flex items-center justify-center text-8xl">
+              <div className="text-8xl" role="img" aria-label="Medic stomatolog">
                 👨‍⚕️
               </div>
             </motion.div>
+
+            {/* Optional: micro-CTA subtext */}
+            <div className="mt-6 text-sm text-gray-600">
+              <p>Programează o consultație în Clinica Dr. Gheorghiade — servicii de implant dentar, tratamente de canal și estetică dentară în Craiova.</p>
+              <p className="mt-2 font-medium text-gray-800">Telefon: <a href="tel:0766863223" className="text-blue-600">076 686 3223</a> / <a href="tel:0757101077" className="text-blue-600">075 710 1077</a></p>
+            </div>
           </motion.div>
         </div>
       </div>
