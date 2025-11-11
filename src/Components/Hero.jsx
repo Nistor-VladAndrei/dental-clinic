@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { Menu, X, Phone, Mail, MapPin, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
 import AnimatedBackground from './AnimatedBackground';
+
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -11,10 +12,9 @@ const fadeInUp = {
 const staggerContainer = {
   animate: { transition: { staggerChildren: 0.1 } }
 };
+
 const Hero = () => {
   const prefersReducedMotion = useReducedMotion();
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 300], [0, 50]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50/50 via-white to-purple-50/30">
@@ -103,7 +103,6 @@ const Hero = () => {
       </div>
 
       <motion.div
-        style={prefersReducedMotion ? {} : { y }}
         animate={prefersReducedMotion ? {} : { y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-blue-400"
@@ -115,4 +114,5 @@ const Hero = () => {
     </section>
   );
 };
+
 export default Hero;

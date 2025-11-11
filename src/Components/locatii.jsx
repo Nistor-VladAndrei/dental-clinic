@@ -100,7 +100,17 @@ const Locations = () => {
   };
 
   return (
-    <section id="locatii" className="py-20 bg-white relative overflow-hidden">
+    <>
+      <style>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
+      <section id="locatii" className="py-16 md:py-20 bg-white relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-purple-50/20 via-transparent to-blue-50/30" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -110,12 +120,12 @@ const Locations = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-extralight text-gray-800 mb-4 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-extralight text-gray-800 mb-3 md:mb-4 tracking-tight px-4">
             Cabinetele Noastre în Craiova
           </h2>
-          <p className="text-lg text-gray-500 font-light max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-500 font-light max-w-2xl mx-auto px-4">
             Două locații moderne în Craiova pentru servicii stomatologice complete: implantologie, estetică dentară, endodonție și ortodonție.
           </p>
         </motion.div>
@@ -126,7 +136,7 @@ const Locations = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-col sm:flex-row justify-center gap-4 mb-12"
+          className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-8 md:mb-12 px-4"
         >
           {locations.map((loc, idx) => (
             <motion.button
@@ -134,16 +144,16 @@ const Locations = () => {
               onClick={() => setActiveLocation(idx)}
               whileHover={prefersReducedMotion ? {} : { scale: 1.03 }}
               whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
-              className={`px-6 py-4 rounded-2xl font-light transition-all duration-300 border ${
+              className={`w-full sm:w-auto px-6 py-3.5 sm:py-4 rounded-2xl font-light transition-all duration-300 border ${
                 activeLocation === idx
                   ? `bg-gradient-to-r ${loc.gradient} text-white border-transparent shadow-xl`
                   : 'bg-white/70 backdrop-blur-md text-gray-600 border-gray-200/50 hover:border-blue-300/50'
               }`}
             >
-              <span className="text-2xl mr-3" role="img" aria-label={loc.name}>
+              <span className="text-2xl mr-2 sm:mr-3" role="img" aria-label={loc.name}>
                 {loc.images[0].emoji}
               </span>
-              <span className="text-sm sm:text-base">{loc.city.split(',')[0]}</span>
+              <span className="text-base sm:text-base font-medium sm:font-light">{loc.city.split(',')[0]}</span>
             </motion.button>
           ))}
         </motion.div>
@@ -162,7 +172,7 @@ const Locations = () => {
             className="space-y-6"
           >
             {/* Image Carousel */}
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/40">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/40">
               <div className="aspect-video relative">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -174,7 +184,7 @@ const Locations = () => {
                     className={`absolute inset-0 bg-gradient-to-br ${currentLocation.images[currentImageIndex].bg} flex items-center justify-center`}
                   >
                     <div className="absolute inset-0 bg-black/10" />
-                    <div className="text-9xl relative z-10" role="img" aria-label={currentLocation.images[currentImageIndex].label}>
+                    <div className="text-6xl sm:text-8xl md:text-9xl relative z-10" role="img" aria-label={currentLocation.images[currentImageIndex].label}>
                       {currentLocation.images[currentImageIndex].emoji}
                     </div>
                   </motion.div>
@@ -183,47 +193,47 @@ const Locations = () => {
                 {/* Navigation Arrows */}
                 <button
                   onClick={prevImage}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md hover:bg-white text-gray-800 rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110 z-20"
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md hover:bg-white text-gray-800 rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300 hover:scale-110 z-20"
                   aria-label="Imagine anterioară"
                 >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
                 <button
                   onClick={nextImage}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md hover:bg-white text-gray-800 rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110 z-20"
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md hover:bg-white text-gray-800 rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300 hover:scale-110 z-20"
                   aria-label="Imagine următoare"
                 >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
 
                 {/* Image Info Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6 z-10">
-                  <h3 className="text-white font-medium text-lg mb-1">
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 sm:p-6 z-10">
+                  <h3 className="text-white font-medium text-base sm:text-lg mb-1">
                     {currentLocation.name}
                   </h3>
-                  <p className="text-white/90 text-sm font-light">
+                  <p className="text-white/90 text-xs sm:text-sm font-light">
                     {currentLocation.images[currentImageIndex].label}
                   </p>
                 </div>
               </div>
 
               {/* Thumbnail Navigation */}
-              <div className="bg-white/90 backdrop-blur-md p-4 flex gap-2 overflow-x-auto">
+              <div className="bg-white/90 backdrop-blur-md p-3 sm:p-4 flex gap-2 overflow-x-auto scrollbar-hide">
                 {currentLocation.images.map((img, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentImageIndex(idx)}
-                    className={`flex-shrink-0 w-16 h-16 rounded-xl transition-all duration-300 ${
+                    className={`flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-xl transition-all duration-300 ${
                       idx === currentImageIndex
                         ? `bg-gradient-to-br ${img.bg} scale-110 shadow-lg`
                         : 'bg-gray-100 hover:scale-105 opacity-60 hover:opacity-100'
                     }`}
                   >
-                    <div className="text-2xl flex items-center justify-center h-full">
+                    <div className="text-xl sm:text-2xl flex items-center justify-center h-full">
                       {img.emoji}
                     </div>
                   </button>
@@ -231,8 +241,8 @@ const Locations = () => {
               </div>
 
               {/* Carousel Indicators */}
-              <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md rounded-full px-3 py-1 z-20">
-                <span className="text-white text-sm font-light">
+              <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-black/50 backdrop-blur-md rounded-full px-2.5 py-1 sm:px-3 sm:py-1 z-20">
+                <span className="text-white text-xs sm:text-sm font-light">
                   {currentImageIndex + 1} / {totalImages}
                 </span>
               </div>
@@ -245,14 +255,14 @@ const Locations = () => {
               rel="noopener noreferrer"
               whileHover={prefersReducedMotion ? {} : { scale: 1.02 }}
               whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
-              className="block bg-gradient-to-br from-blue-50/80 to-purple-50/80 backdrop-blur-md rounded-3xl p-6 border border-white/40 hover:shadow-lg transition-all duration-300"
+              className="block bg-gradient-to-br from-blue-50/80 to-purple-50/80 backdrop-blur-md rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-white/40 hover:shadow-lg transition-all duration-300"
             >
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-gray-800 font-medium mb-1">Deschide în Google Maps</p>
-                  <p className="text-gray-500 text-sm font-light">Obține indicații către cabinet</p>
+                <div className="flex-1">
+                  <p className="text-gray-800 font-medium mb-1 text-sm sm:text-base">Deschide în Google Maps</p>
+                  <p className="text-gray-500 text-xs sm:text-sm font-light">Obține indicații către cabinet</p>
                 </div>
-                <div className="text-4xl">🗺️</div>
+                <div className="text-3xl sm:text-4xl ml-3">🗺️</div>
               </div>
             </motion.a>
           </motion.div>
@@ -263,47 +273,47 @@ const Locations = () => {
             className="space-y-6"
           >
             {/* Contact Card */}
-            <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/40">
-              <h3 className="text-2xl font-light text-gray-800 mb-6 flex items-center gap-3">
-                <span className="text-3xl">📞</span>
+            <div className="bg-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-lg border border-white/40">
+              <h3 className="text-xl sm:text-2xl font-light text-gray-800 mb-5 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                <span className="text-2xl sm:text-3xl">📞</span>
                 Contact și Program
               </h3>
               
               <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="text-2xl">☎️</div>
-                  <div>
-                    <p className="text-sm text-gray-500 font-light mb-1">Telefon</p>
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="text-xl sm:text-2xl flex-shrink-0">☎️</div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs sm:text-sm text-gray-500 font-light mb-1">Telefon</p>
                     <a 
                       href={`tel:${currentLocation.phone.replace(/\s/g, '')}`}
-                      className="text-lg font-medium text-blue-600 hover:text-blue-700 transition-colors"
+                      className="text-base sm:text-lg font-medium text-blue-600 hover:text-blue-700 transition-colors break-all"
                     >
                       {currentLocation.phone}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="text-2xl">✉️</div>
-                  <div>
-                    <p className="text-sm text-gray-500 font-light mb-1">Email</p>
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="text-xl sm:text-2xl flex-shrink-0">✉️</div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs sm:text-sm text-gray-500 font-light mb-1">Email</p>
                     <a 
                       href={`mailto:${currentLocation.email}`}
-                      className="text-lg font-medium text-blue-600 hover:text-blue-700 transition-colors"
+                      className="text-base sm:text-lg font-medium text-blue-600 hover:text-blue-700 transition-colors break-all"
                     >
                       {currentLocation.email}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="text-2xl">📍</div>
-                  <div>
-                    <p className="text-sm text-gray-500 font-light mb-1">Adresă</p>
-                    <p className="text-lg font-medium text-gray-800">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="text-xl sm:text-2xl flex-shrink-0">📍</div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs sm:text-sm text-gray-500 font-light mb-1">Adresă</p>
+                    <p className="text-base sm:text-lg font-medium text-gray-800">
                       {currentLocation.address}
                     </p>
-                    <p className="text-sm text-gray-600 font-light">
+                    <p className="text-xs sm:text-sm text-gray-600 font-light">
                       {currentLocation.city}
                     </p>
                   </div>
@@ -312,17 +322,17 @@ const Locations = () => {
             </div>
 
             {/* Schedule Card */}
-            <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/40">
-              <h3 className="text-xl font-light text-gray-800 mb-4 flex items-center gap-3">
-                <span className="text-2xl">🕐</span>
+            <div className="bg-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-lg border border-white/40">
+              <h3 className="text-lg sm:text-xl font-light text-gray-800 mb-4 flex items-center gap-2 sm:gap-3">
+                <span className="text-xl sm:text-2xl">🕐</span>
                 Program
               </h3>
               
               <div className="space-y-3">
                 {currentLocation.schedule.map((s, i) => (
-                  <div key={i} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
-                    <span className="text-gray-600 font-light">{s.day}</span>
-                    <span className="text-gray-800 font-medium">{s.hours}</span>
+                  <div key={i} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0 gap-4">
+                    <span className="text-sm sm:text-base text-gray-600 font-light">{s.day}</span>
+                    <span className="text-sm sm:text-base text-gray-800 font-medium whitespace-nowrap">{s.hours}</span>
                   </div>
                 ))}
               </div>
@@ -338,20 +348,20 @@ const Locations = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 text-center bg-gradient-to-br from-blue-500/10 to-purple-500/10 backdrop-blur-md rounded-3xl p-8 border border-white/40"
+          className="mt-12 md:mt-16 text-center bg-gradient-to-br from-blue-500/10 to-purple-500/10 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/40"
         >
-          <h3 className="text-2xl font-light text-gray-800 mb-4">
+          <h3 className="text-xl sm:text-2xl font-light text-gray-800 mb-3 sm:mb-4 px-4">
             Programează o Consultație în Craiova
           </h3>
-          <p className="text-gray-600 font-light mb-6 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-gray-600 font-light mb-5 sm:mb-6 max-w-2xl mx-auto px-4">
             Alege locația preferată și vino să discutăm despre sănătatea ta dentară. Oferim consultații personalizate pentru implantologie, estetică dentară și toate serviciile stomatologice.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
             <motion.a
               href="tel:0766863223"
               whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
               whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
-              className="inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-2xl font-light shadow-lg hover:shadow-xl transition-all duration-300"
+              className="inline-block px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-2xl font-light shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base"
             >
               📞 Sună acum - Centru
             </motion.a>
@@ -359,7 +369,7 @@ const Locations = () => {
               href="tel:0757101077"
               whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
               whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
-              className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-2xl font-light shadow-lg hover:shadow-xl transition-all duration-300"
+              className="inline-block px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-2xl font-light shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base"
             >
               📞 Sună acum - Preajba
             </motion.a>
@@ -372,15 +382,16 @@ const Locations = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-12 text-center"
+          className="mt-8 md:mt-12 text-center px-4"
         >
-          <p className="text-sm text-gray-500 font-light max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm text-gray-500 font-light max-w-4xl mx-auto leading-relaxed">
             Clinica Dr. Gheorghiade oferă servicii stomatologice complete în două locații în Craiova: cabinet stomatologic în centrul orașului pe Strada Caracal și clinică modernă în Preajba, zona Selgros, Strada Capsunilor. Ambele cabinete dispun de echipamente moderne pentru implantologie dentară, estetică dentară, endodonție, ortodonție și tratamente de canal. Programări disponibile în Craiova la telefoanele 0766 863 223 (Centru) și 0757 101 077 (Preajba, Selgros).
           </p>
         </motion.div>
       </div>
     </section>
+    </>
   );
 };
 
-export default Locations;
+export default Locations
